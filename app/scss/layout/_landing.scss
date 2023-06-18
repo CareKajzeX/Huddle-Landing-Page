@@ -1,0 +1,117 @@
+@use '../utilities' as u;
+
+body {
+  background: url(../images/bg-mobile.svg) no-repeat, var(--primary-color);
+
+  @include u.breakpoint-up(small) {
+    background: url(../images/bg-desktop.svg) no-repeat, var(--primary-color);
+  }
+}
+
+.landing {
+  @include u.grid-center;
+
+  @include u.breakpoint-up(large) {
+    grid-template-columns: 55% 45%;
+    position: relative;
+  }
+
+  // Header
+
+  &__header {
+    margin-inline: u.rem(30);
+    margin-block: u.rem(30) 0;
+
+    @include u.breakpoint-up(large) {
+      margin-left: u.rem(65);
+      margin-top: u.rem(60);
+    }
+  }
+
+  &__logo {
+    width: u.rem(135);
+    justify-self: start;
+
+    @include u.breakpoint-up(large) {
+      width: u.rem(200);
+    }
+  }
+
+  &__image {
+    margin-block: u.rem(60);
+    width: u.responsive(350, 150, 20vw, 500);
+
+    @include u.breakpoint-up(large) {
+      margin-left: u.rem(10);
+      margin-block: u.rem(80);
+      width: auto;
+    }
+  }
+
+  // Content
+
+  &__content {
+    text-align: center;
+    color: var(--text-default-color);
+    margin-inline: u.rem(35);
+
+    @include u.breakpoint-up(large) {
+      text-align: left;
+      margin-inline: u.rem(45) u.rem(150);
+    }
+  }
+
+  &__title {
+    @include u.breakpoint-up(large) {
+      font-size: u.responsive(15, 15, 2vw, 40);
+    }
+  }
+
+  &__description {
+    margin-block: u.rem(10);
+
+    @include u.breakpoint-up(large) {
+      font-size: u.rem(18);
+    }
+  }
+
+  &__button {
+    font-size: u.rem(13);
+    margin-block: u.rem(10);
+    padding: u.rem(10) u.rem(75);
+
+    @include u.breakpoint-up(large) {
+      font-size: u.rem(18);
+      margin-block: u.rem(15);
+      padding: u.rem(15) u.rem(65);
+    }
+  }
+
+  &__socials {
+    margin-top: u.rem(55);
+
+    @include u.breakpoint-up(large) {
+      margin-top: 0rem;
+      margin-right: u.rem(150);
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  &__social {
+    display: inline-block;
+    color: var(--text-default-color);
+    margin-inline: u.rem(10);
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--secondary-color);
+    }
+
+    @include u.breakpoint-up(large) {
+      font-size: u.rem(24);
+      margin-inline: u.rem(15);
+    }
+  }
+}

@@ -1,0 +1,37 @@
+@use 'functions' as f;
+
+$breakpoints-up: (
+  'small': f.em(376),
+  'medium': f.em(900),
+  'large': f.em(1100),
+);
+
+$breakpoints-down: (
+  'small': f.em(375.98),
+  'medium': f.em(899.98),
+  'large': f.em(1099.98),
+);
+
+@mixin breakpoint-up($key) {
+  $size: map-get($breakpoints-up, $key);
+
+  @if ($size) {
+    @media (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @error '`#{$key}` does not exist in the $breakpoints';
+  }
+}
+
+@mixin breakpoint-down($key) {
+  $size: map-get($breakpoints-down, $key);
+
+  @if ($size) {
+    @media (max-width: $size) {
+      @content;
+    }
+  } @else {
+    @error '`#{$key}` does not exist in the $breakpoints';
+  }
+}

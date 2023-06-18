@@ -1,0 +1,32 @@
+@use 'sass:math';
+
+// Transforms px to rem unit
+@function rem($pixel) {
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 16) + rem;
+  } @else {
+    @error 'Don\'t use units when using rem() function; only numbers.';
+  }
+}
+
+// Transforms px to em unit
+@function em($pixel) {
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 16) + em;
+  } @else {
+    @error 'Don\'t use units when using em() function; only numbers.';
+  }
+}
+
+// Make responsive font-size, image etc..
+@function responsive($min, $preffered, $vw, $max) {
+  @if (
+    math.is-unitless($min) and
+      math.is-unitless($preffered) and
+      math.is-unitless($max)
+  ) {
+    @return clamp(rem($min), rem($preffered) + $vw, rem($max));
+  } @else {
+    @error 'Don\'t use units when using responsive() function; only numbers';
+  }
+}

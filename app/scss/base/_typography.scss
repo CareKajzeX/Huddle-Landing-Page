@@ -1,0 +1,22 @@
+@use '../utilities' as u;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;600&display=swap');
+
+body {
+  font-family: var(--main-text-font);
+  font-weight: 400;
+}
+
+h1 {
+  font-family: var(--main-heading-font);
+  font-weight: 600;
+}
+
+h2 {
+  font-family: var(--main-heading-font);
+  font-weight: 400;
+}
+
+p {
+  font-size: u.rem(16);
+}

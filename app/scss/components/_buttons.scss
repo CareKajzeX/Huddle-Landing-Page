@@ -1,0 +1,21 @@
+@use '../utilities' as u;
+
+.button {
+  @include u.box-shadow;
+
+  display: inline-block;
+  font-family: var(--main-heading-font);
+  border: none;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &--primary {
+    color: var(--primary-color);
+    border-radius: u.rem(30);
+
+    &:hover {
+      color: hsl(0, 0%, 100%);
+      background: var(--secondary-color);
+    }
+  }
+}
